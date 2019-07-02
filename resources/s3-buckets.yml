@@ -1,0 +1,41 @@
+Resources:
+  DstBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${env:DST_BUCKET}
+      # Set the CORS policy
+      CorsConfiguration:
+        CorsRules:
+          -
+            AllowedOrigins:
+              - '*'
+            AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+              - PUT
+              - POST
+              - DELETE
+              - HEAD
+            MaxAge: 3000
+  S3BucketSrc:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${env:SRC_BUCKET}
+      # Set the CORS policy
+      CorsConfiguration:
+        CorsRules:
+          -
+            AllowedOrigins:
+              - '*'
+            AllowedHeaders:
+              - 'Authorization'
+            AllowedMethods:
+              - GET
+              - POST
+              - HEAD
+            MaxAge: 3000
+Outputs:
+  DstBucket:
+    Value:
+      Ref: DstBucket
