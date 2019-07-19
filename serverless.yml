@@ -23,6 +23,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs8.10
+  #runtime: nodejs10.x
   stage: dev
   region: us-east-1
   profile: tutortrove
@@ -32,20 +33,37 @@ provider:
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+      Resource:
+         Fn::Join:
+           - ""
+           - - "arn:aws:s3:::"
+             - "${env:SRC_BUCKET}" 
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - "${env:SRC_BUCKET}"
+            - "/*"
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+        - "s3:PutObjectAcl"
+        - "s3:PutObjectVersionAcl"
+        - "s3:PutObjectTagging"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - "Ref" : DstBucket
+            - "/*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -62,7 +80,7 @@ provider:
 
 functions:
   convert:
-    handler: handler.hello
+    handler: handler.processFile
     events:
       - s3:
           bucket: src
@@ -118,7 +136,7 @@ functions:
 #       Description: "Description for the output"
 #       Value: "Some output value"
 resources:
-  #Permissions
-  - ${file(resources/permissions.yml)}
   #S3 Buckets
   - ${file(resources/s3-buckets.yml)}
+  #Permissions
+  - ${file(resources/permissions.yml)}
