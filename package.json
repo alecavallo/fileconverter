@@ -28,6 +28,8 @@
     "imagemin-gifsicle": "6.0.1",
     "imagemin-jpegtran": "6.0.0",
     "imagemin-pngquant": "8.0.0",
+    "pdf2img": "0.5.0",
+    "pdf2img-lambda-friendly": "2.0.0",
     "sharp": "0.22.1",
     "update": "0.7.4"
   },

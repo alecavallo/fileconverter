@@ -25,6 +25,7 @@ module.exports.processFile = async event => {
     })
     .catch(err => {
       console.log("ERROR in handler: %s", err);
+      console.error(err.stack);
       throw ("Error: %s", err);
     });
   return true;
