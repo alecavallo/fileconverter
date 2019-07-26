@@ -82,7 +82,7 @@ functions:
   convert:
     handler: handler.processFile
     description: Processes images compressing it and generating thumbnails. Also convert PDFs into PNGs
-    timeout: 60
+    timeout: 120
     layers:
       - arn:aws:lambda:::awslayer:AmazonLinux1703
     events:
