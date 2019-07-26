@@ -19,9 +19,18 @@ module.exports.hello = async event => {
 module.exports.processFile = async event => {
   await convert
     .process(event.Records[0].s3)
-    .then(result => {
-      console.log("Finished convert process");
-      return result;
+    .then(function(result) {
+      return convert
+        .clear(
+          event.Records[0].s3.bucket.name,
+          event.Records[0].s3.object.key,
+          "/tmp"
+        )
+        .then(() => {
+          console.log("Environment cleared successfully");
+          console.log("Finished convert process");
+          return result;
+        });
     })
     .catch(err => {
       console.log("ERROR in handler: %s", err);
