@@ -39,3 +39,17 @@ module.exports.processFile = async event => {
     });
   return true;
 };
+
+module.exports.testpdf = async event => {
+  return await convert
+    .testpdf()
+    .then(function(result) {
+      console.log("finished!");
+    })
+    .catch(err => {
+      console.log("ERROR in handler: %s", err);
+      console.error(err.stack);
+      console.error(err);
+      throw ("Error: %s", err);
+    });
+};
