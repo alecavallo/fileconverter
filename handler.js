@@ -1,7 +1,6 @@
 "use strict";
 
 const convert = require("./lib/convert.js");
-const util = require("util");
 
 module.exports.hello = async event => {
   return {
@@ -17,8 +16,11 @@ module.exports.hello = async event => {
 };
 
 module.exports.processFile = async event => {
+  console.log(event);
+  var timestamp = new Date(event.Records[0].eventTime).getTime();
+  console.log("Setting timestamp as %s", timestamp);
   await convert
-    .process(event.Records[0].s3)
+    .process(event.Records[0].s3, timestamp)
     .then(function(result) {
       return convert
         .clear(
