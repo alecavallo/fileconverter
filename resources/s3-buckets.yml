@@ -6,11 +6,10 @@ Resources:
       # Set the CORS policy
       CorsConfiguration:
         CorsRules:
-          -
-            AllowedOrigins:
-              - '*'
+          - AllowedOrigins:
+              - "*"
             AllowedHeaders:
-              - '*'
+              - "*"
             AllowedMethods:
               - GET
               - PUT
@@ -25,11 +24,10 @@ Resources:
       # Set the CORS policy
       CorsConfiguration:
         CorsRules:
-          -
-            AllowedOrigins:
-              - '*'
+          - AllowedOrigins:
+              - "*"
             AllowedHeaders:
-              - 'Authorization'
+              - "Authorization"
             AllowedMethods:
               - GET
               - POST
