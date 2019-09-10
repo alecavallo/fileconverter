@@ -13,6 +13,9 @@
 
 service: fileconverter # NOTE: update this with your service name
 
+custom:
+  myStage: ${opt:stage, self:provider.stage}
+
 plugins:
   - serverless-dotenv-plugin
 
@@ -93,7 +96,8 @@ functions:
     timeout: 900
     memorySize: 2048
     layers:
-      - arn:aws:lambda:us-east-1:919810951292:layer:lambda-ghostscript:3
+      - arn:aws:lambda:us-east-1:919810951292:layer:lambda-ghostscript:4
+      - arn:aws:lambda:us-east-1:919810951292:layer:lambda-imagemagick:3
       - arn:aws:lambda:us-east-1:919810951292:layer:nodejs-poppler:1
       - arn:aws:lambda:::awslayer:AmazonLinux1703
 
