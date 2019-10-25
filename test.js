@@ -5,12 +5,7 @@ const filePath = "./tmp/tux.jpg";
 const bucketName = "tt-test-tmp2alejandro-uploads";
 const key = "uploads/tux.jpg";
 AWS.config.setPromisesDependency();
-//MY USER
-/* AWS.config.update({
-  accessKeyId: "AKIAIWMIEEXZ4CKGZOAA",
-  secretAccessKey: "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",
-  region: "us-east-1"
-}); */
+
 AWS.config.update({
   accessKeyId: "AKIA5MKIBJB6NUTJHDG6",
   secretAccessKey: "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",
