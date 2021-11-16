@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/alecavallo/fileconverter#readme",
   "dependencies": {
-    "aws-sdk": "2.486.0",
+    "aws-sdk": "2.814.0",
     "dotenv": "8.0.0",
     "firebase-admin": "8.3.0",
     "fs-extra": "8.1.0",
