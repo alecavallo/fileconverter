@@ -31,7 +31,7 @@
     "imagemin-pngquant": "8.0.0",
     "p-limit": "2.2.0",
     "pdf-image": "git+https://github.com/alecavallo/node-pdf-image.git",
-    "sharp": "0.22.1",
+    "sharp": "0.30.5",
     "to-px": "1.1.0",
     "update": "0.7.4"
   },
